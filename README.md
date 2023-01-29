@@ -1,10 +1,27 @@
-<h1 align="center">
-	42_printf :memo: 
-</h1>
+<h1 align="center">	42_printf :memo: 				</h1>
+<p align="center">	<i>Because putnbr and putstr aren’t enough</i>	</p>
 
+## :bookmark_tabs: Project description
 
+> _The goal of this project is pretty straightforward. You will recode printf().
+You will mainly learn about using a variable number of arguments. How cool is that??
+It is actually pretty cool :)_
 
+Fulll subject you can see [here](https://github.com/Elshirak/42_printf/blob/main/Subject.pdf).
+<hr><img width="500" alt="Screen Shot 2023-01-29 at 9 01 38 PM" src="https://user-images.githubusercontent.com/68464959/215343042-170e7169-184f-4dc3-b47f-afa518dc18bc.png" align="right">
 
+* ***Actual status:*** In progress  
+* ***Approximate labor costs:***    about 70 hours
+* ***Actual labor costs:***    0 hours 0 minutes
+* ***Start date:***    30.01.2023 
+* ***Deadline:***   07.02.2023
+<br>
+<br>
+<br>
+
+***RESULT :*** 
+
+## :lotus_position_man: Main idea of implementation
 
 
 References:
