@@ -13,4 +13,4 @@ References:
 - [The C programming Language](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxnanVoYWN8Z3g6NTFiY2ExMDdkYTI5YmRmZA) by Brian W. Kernighan and Dennis M. Ritchie.
 - [Manual about printf](https://wiki.bash-hackers.org/commands/builtin/printf) 
 
-* Thanks to [Gavinfielder](https://github.com/gavinfielder) for the [pft](https://github.com/gavinfielder/pft) tester for printf()
+Special shoutouts to [Gavinfielder](https://github.com/gavinfielder) for the [pft](https://github.com/gavinfielder/pft) tester for printf()
