@@ -1,6 +1,6 @@
-# 42_printf :memo: 
-
-
+<h1 align="center">
+	42_printf :memo: 
+</h1>
 
 
 
@@ -13,6 +13,7 @@ References:
 - [The C programming Language](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxnanVoYWN8Z3g6NTFiY2ExMDdkYTI5YmRmZA) by Brian W. Kernighan and Dennis M. Ritchie.
 - [Manual about printf](https://wiki.bash-hackers.org/commands/builtin/printf) 
 - [Tutorial](https://csnotes.medium.com/ft-printf-tutorial-42project-f09b6dc1cd0e) on ft_printf
+- Variadic functions #include <stdarg.h> va_start, va_arg, va_copy, va_end
 
 Special shoutouts to:
 * Thanks to [Gavinfielder](https://github.com/gavinfielder) for the [pft](https://github.com/gavinfielder/pft) tester for printf()
