@@ -13,4 +13,8 @@ References:
 - [The C programming Language](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxnanVoYWN8Z3g6NTFiY2ExMDdkYTI5YmRmZA) by Brian W. Kernighan and Dennis M. Ritchie.
 - [Manual about printf](https://wiki.bash-hackers.org/commands/builtin/printf) 
 
-Special shoutouts to [Gavinfielder](https://github.com/gavinfielder) for the [pft](https://github.com/gavinfielder/pft) tester for printf()
+Special shoutouts to:
+* Thanks to [Gavinfielder](https://github.com/gavinfielder) for the [pft](https://github.com/gavinfielder/pft) tester for printf()
+* Thanks to [charMstr](https://github.com/charMstr) for the [printf_lover_v2](https://github.com/charMstr/printf_lover_v2)
+* Thanks to [cacharle](https://github.com/cacharle) for the [ft_printf_test](https://github.com/cacharle/ft_printf_test)
+* Thanks to [xicodomingues](https://github.com/xicodomingues) for the [francinette](https://github.com/xicodomingues/francinette) 
