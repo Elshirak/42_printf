@@ -10,7 +10,7 @@ It is actually pretty cool :)_
 Fulll subject you can see [here](https://github.com/Elshirak/42_printf/blob/main/Subject.pdf).
 <hr><img width="500" alt="Screen Shot 2023-01-29 at 9 01 38 PM" src="https://user-images.githubusercontent.com/68464959/215343042-170e7169-184f-4dc3-b47f-afa518dc18bc.png" align="right">
 
-* ***Actual status:*** In progress  
+* [![selbakya's 42 ft_printf Score](https://badge42.vercel.app/api/v2/cldj70azv00300fl3u17rbnil/project/2952785)](https://github.com/JaeSeoKim/badge42)  
 * ***Approximate labor costs:***    about 70 hours
 * ***Actual labor costs:***    0 hours 0 minutes
 * ***Start date:***    30.01.2023 
