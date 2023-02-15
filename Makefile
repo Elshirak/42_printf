@@ -6,16 +6,16 @@
 #    By: selbakya <selbakya@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/18 14:04:13 by selbakya          #+#    #+#              #
-#    Updated: 2023/01/30 17:52:32 by selbakya         ###   ########.fr        #
+#    Updated: 2023/02/07 20:03:24 by selbakya         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = #-Wall -Wextra -Werror
 
-MY_LIB = /libft
+MY_LIB = ./libft
 
 HEADER = ft_printf.h  
 HEADER_BONUS = ft_printf_bonus.h  
@@ -46,7 +46,7 @@ all: $(NAME)
 	@echo $?
 
 $(NAME): $(OBJECTS) $(HEADER)
-	@$(MAKE) --directory=/libft
+	@$(MAKE) --directory=./libft
 	@ar -rc $(NAME) $?
 	@ranlib $(NAME)
 	@echo "\n$(BLUE1)     Ft_printf functions was created \n$(RESET)"
@@ -66,7 +66,7 @@ clean:
 	@echo "$(PINK) ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~\n$(RESET)\c"
 
 fclean: clean
-	@$(MAKE) --directory=$(MY_LIB) f clean
+	@$(MAKE) --directory=$(MY_LIB) fclean
 	@rm -f $(NAME)
 	@echo "$(PINK) ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~\n$(RESET)\c"
 	@echo 
