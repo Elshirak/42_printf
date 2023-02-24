@@ -24,6 +24,10 @@ Fulll subject you can see [here](https://github.com/Elshirak/42_printf/blob/main
 ## :lotus_position_man: Main idea of implementation
 
 
+
+![dfghj](https://user-images.githubusercontent.com/68464959/221186222-3332cb9b-ea32-4380-9c64-d2493be5df8f.jpg)
+
+
 References:
 - [Linux system programming](https://doc.lagout.org/programmation/unix/Linux%20System%20Programming%20Talking%20Directly%20to%20the%20Kernel%20and%20C%20Library.pdf) by Robert Love
 - [Managing projects with GNU Make](http://uploads.mitechie.com/books/Managing_Projects_with_GNU_Make_Third_Edition.pdf) by Robert Mecklenburg
