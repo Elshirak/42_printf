@@ -21,7 +21,6 @@ Fulll subject you can see [here](https://github.com/Elshirak/42_printf/blob/main
 
 ***RESULT :*** 
 
-## :lotus_position_man: Main idea of implementation
 
 
 
