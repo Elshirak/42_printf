@@ -6,7 +6,7 @@
 /*   By: selbakya <selbakya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 20:48:37 by selbakya          #+#    #+#             */
-/*   Updated: 2023/02/15 20:44:34 by selbakya         ###   ########.fr       */
+/*   Updated: 2023/02/24 16:08:07 by selbakya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ t_list	*ft_lstlast(t_list *lst);
 int		ft_lstsize(t_list *lst);
 void	ft_lstadd_front(t_list **lst, t_list *new);
 t_list	*ft_lstnew(void *content);
-void	ft_putchar_fd(char c, int fd);
+int		ft_putchar(char c);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
-size_t	ft_putnbr_fd(int n);
+void	ft_putnbr_fd(int n, int fd);
 void	ft_putendl_fd(char *s, int fd);
-size_t	ft_putstr_fd(char *s, int fd);
+void	ft_putstr_fd(char *s, int fd);
 int		ft_atoi(const char *str);
 void	*ft_calloc(size_t number_of_elements, size_t size_of_element);
 char	*ft_itoa(int n);

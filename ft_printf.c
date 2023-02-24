@@ -6,52 +6,71 @@
 /*   By: selbakya <selbakya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 15:43:22 by selbakya          #+#    #+#             */
-/*   Updated: 2023/02/15 22:03:32 by selbakya         ###   ########.fr       */
+/*   Updated: 2023/02/24 16:12:46 by selbakya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft/libft.h"
 
-size_t	ft_get_format(char f_symb, va_list arg_list)
+void	ft_putchar1(char c, int fd)
 {
-	size_t	printed_characters;
+	write(fd, &c, 1);
+}
 
-	printed_characters = 0;
+void	ft_putstr(char *str, int *length)
+{
+	if (!str)
+	{
+		*length += write(1, "(null)", 6);
+		return ;
+	}
+	*length += write(1, str, ft_strlen(str));
+}
+
+int	ft_check(const char f_symb, va_list arg_list)
+{
+	int	length;
+
+	length = 0;
 	if (f_symb == 'c')
-		printed_characters += write(1, va_arg(arg_list, int), 1);
+		length += ft_putchar(va_arg(arg_list, int));
 	else if (f_symb == 's')
-		printed_characters += ft_putstr_fd(va_arg(arg_list, char *), 1);
-	else if (f_symb == 'p')
-		printed_characters += ft_print_ptr(va_arg(arg_list, unsigned long long)); 
-	else if (f_symb == 'd' || f_symb == 'i')
-		printed_characters += ft_putnbr(va_arg(arg_list, int));
-	else if (f_symb == 'u')
-		printed_characters += ft_putnbr_u(va_arg(arg_list, unsigned int));
-	else if (f_symb == 'x' || f_symb == 'X')
-		printed_characters += ft_putnbr_hex(va_arg(arg_list, unsigned int), f_symb);
+		ft_putstr(va_arg(arg_list, char *), &length);
 	else if (f_symb == '%')
-		printed_characters += write(1, &"%", 1);
-	return (printed_characters);
+		length += ft_putchar('%');
+	else if (f_symb == 'd' || f_symb == 'i')
+		ft_number(va_arg(arg_list, int), &length);
+	else if (f_symb == 'u')
+		ft_unsigned(va_arg(arg_list, unsigned int), &length);
+	else if (f_symb == 'p')
+		ft_pointer(va_arg(arg_list, unsigned long long), &length);
+	else if (f_symb == 'x')
+		ft_hexadec(va_arg(arg_list, unsigned int), 'x', &length);
+	else if (f_symb == 'X')
+		ft_hexadec(va_arg(arg_list, unsigned int), 'X', &length);
+	return (length);
 }
 
 int	ft_printf(const char *str, ...)
 {
-	size_t	length_str;
+	int		len;
+	size_t	index;
 	va_list	arg_list;
 
-	if (!str)
-		return (0);
-	length_str = 0;
+	index = 0;
+	len = 0;
 	va_start(arg_list, str);
-	while (str[length_str])
+	while (str[index] && index < ft_strlen(str))
 	{
-		if (str[length_str] == '%')
-			length_str += ft_get_format(str[length_str + 1], arg_list);
+		if (str[index] == '%')
+		{
+			++index;
+			len += ft_check(str[index], arg_list);
+		}
 		else
-			length_str += write(1, &str[length_str], 1);
-		++length_str;
+			len += ft_putchar(str[index]);
+		++index;
 	}
 	va_end(arg_list);
-	return (length_str);
+	return (len);
 }

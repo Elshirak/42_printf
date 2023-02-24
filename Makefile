@@ -6,25 +6,23 @@
 #    By: selbakya <selbakya@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/18 14:04:13 by selbakya          #+#    #+#              #
-#    Updated: 2023/02/07 20:03:24 by selbakya         ###   ########.fr        #
+#    Updated: 2023/02/24 16:21:52 by selbakya         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libftprintf.a
+NAME	=	libftprintf.a
 
-CC = cc
-CFLAGS = #-Wall -Wextra -Werror
+LIBFTD = libft/
+LIBFT := ${addprefix ${LIBFTD},libft.a}
+LIBFTMK = make -C $(LIBFTD)
 
-MY_LIB = ./libft
+CC 		=	cc
+CFLAGS	=	-Wall -Wextra -Werror
 
-HEADER = ft_printf.h  
-HEADER_BONUS = ft_printf_bonus.h  
+SOURCE	=	ft_printf.c	utilc.c
+HEADER	=	ft_printf.h
 
-SOURCES = $(wildcard *.c | grep -v "bonus" )
-SOURCES_BONUS = $(wildcard *.c | grep "bonus")
-
-OBJECTS = $(SOURCES:.c=.o)
-OBJ_BONUS = $(SOURCES_BONUS:.c=.o)
+OBJECT	=	$(SOURCE:.c=.o)
 
 #Colors
 DEF_COLOR = \033[0;39m
@@ -36,49 +34,42 @@ BLUE1 = \033[0;94m
 MAGENTA = \033[0;95m
 CYAN = \033[0;96m
 WHITE = \033[0;97m
-BLUE = \033[1;36m
+BLUE = \033[1;36m 
 PINK = \033[1;35m
 RESET = \033[0m
 
-.PHONY: all bonus clean fclean re norm
+.PHONY: all clean fclean re
 
-all: $(NAME)	
-	@echo $?
+all : $(NAME)
 
-$(NAME): $(OBJECTS) $(HEADER)
-	@$(MAKE) --directory=./libft
-	@ar -rc $(NAME) $?
-	@ranlib $(NAME)
-	@echo "\n$(BLUE1)     Ft_printf functions was created \n$(RESET)"
+$(NAME) : $(OBJECT) $(LIBFT)
+	@cp $(LIBFT) $(NAME)
+	@ar rc $(NAME) $(OBJECT) $?
+	@echo "$(BLUE1) ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~\n$(RESET)\c"
+	@echo "\n$(BLUE1)                 libftprintf created \n$(RESET)"
+	@echo "$(BLUE1) ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~\n$(RESET)\c"
 
-bonus: $(OBJ_BONUS) $(HEADER_BONUS)
-	@$(MAKE) --directory=$(MY_LIB)
-	@ar -rc $(NAME) $?
-	@ranlib $(NAME)
-	@echo "\n$(CYAN)     Ft_printf with bonus functions was created \n$(RESET)"
-
-clean:  
-	@$(MAKE) --directory=$(MY_LIB) clean
-	@echo "$(PINK) ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~\n$(RESET)\c"
+$(LIBFT):
+	$(LIBFTMK)
+	
+clean: 
+	@rm -rf $(OBJECT)
+	@$(LIBFTMK) clean 
+	@echo "$(GREEN) ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~\n$(RESET)\c"
 	@echo 
-	@echo "$(NAME): $(PINK)    object files were deleted $(RESET)"
+	@echo "$(NAME): $(GREEN)    object files were deleted $(RESET)"
 	@echo 
-	@echo "$(PINK) ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~\n$(RESET)\c"
+	@echo "$(GREEN) ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~\n$(RESET)\c"
 
 fclean: clean
-	@$(MAKE) --directory=$(MY_LIB) fclean
-	@rm -f $(NAME)
-	@echo "$(PINK) ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~\n$(RESET)\c"
+	@rm -rf $(NAME)
+	@$(LIBFTMK) fclean 
+	@echo "$(GREEN) ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~\n$(RESET)\c"
 	@echo 
-	@echo "$(NAME):$(PINK)            deleted $(RESET)"
+	@echo "$(NAME):$(GREEN)            deleted $(RESET)"
 	@echo 
-	@echo "$(PINK) ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~\n$(RESET)\c"
+	@echo "$(GREEN) ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ ~~~\n$(RESET)\c"
 
-re: fclean all
-
-norm:
-	@echo "$(GREEN) ~~~ ~~~ ~~~ ~~~ ~~~ ~~~  Norminette  ~~~ ~~~ ~~~ ~~~ ~~~ ~~~ \n$(RED)\c"
-	@echo
-	@norminette $(SOURCES) $(BONUS_SRC) $(HEADER) | grep "Error" -B1 || true
-	@echo
-	@echo "$(GREEN) ~~~ If there is nothing above, all files respect the $(RED)Norm$(GREEN) ~~~\n$(RESET)\c"
+re:
+	@$(MAKE) fclean
+	@$(MAKE) all
