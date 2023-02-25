@@ -6,87 +6,63 @@
 /*   By: selbakya <selbakya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 21:49:10 by selbakya          #+#    #+#             */
-/*   Updated: 2023/02/24 16:12:40 by selbakya         ###   ########.fr       */
+/*   Updated: 2023/02/25 18:36:31 by selbakya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+void	ft_putstr(char *str, int *length)
+{
+	if (!str)
+	{
+		*length += write(1, "(null)", 6);
+		return ;
+	}
+	*length += write(1, str, ft_strlen(str));
+}
+
 void	ft_pointer(unsigned long long numeric, int *length)
 {
-	char	*base;
-	char	p1[25];
-	int		i;
-
-	*length += ft_putchar('0');
-	*length += ft_putchar('x');
-	i = 0;
-	base = "0123456789abcdef";
-	if (numeric == 0)
-		*length += ft_putchar('0');
-	while (numeric != 0)
-	{
-		p1[i] = base[numeric % 16];
-		numeric = numeric / 16;
-		++i;
-	}
-	while (i--)
-		*length += ft_putchar(p1[i]);
+	write(1, "0x", 2);
+	ft_hex_print(numeric, 'x', length);
+	*length += 2;
 }
 
-void	ft_number(int num, int *len)
+void	ft_number(int numeric, int *length)
 {
-	long	n;
+	long	num;
 
-	n = num;
-	if (n < 0)
+	num = numeric;
+	if (num < 0)
 	{
-		*len += ft_putchar('-');
-		n = n * -1;
+		*length += ft_putchar('-');
+		num = num * -1;
 	}
-	if (n > 9)
+	if (num > 9)
 	{
-		ft_number(n / 10, len);
-		ft_number(n % 10, len);
+		ft_number(num / 10, length);
+		ft_number(num % 10, length);
 	}
 	else
-		*len += ft_putchar(n + 48);
+		*length += ft_putchar(num + 48);
 }
 
-void	ft_unsigned(unsigned int num, int *len)
+void	ft_unsigned(unsigned int num, int *length)
 {
 	if (num > 9)
 	{
-		ft_unsigned(num / 10, len);
-		ft_unsigned(num % 10, len);
+		ft_unsigned(num / 10, length);
+		ft_unsigned(num % 10, length);
 	}
 	else
-		*len += ft_putchar(num + 48);
+		*length += ft_putchar(num + 48);
 }
 
-void	ft_putnbr_fd(int num, int fd)
-{
-	long	number;
-
-	number = num;
-	if (number < 0)
-	{
-		ft_putchar1('-', fd);
-		number = -number;
-	}
-	if (number > 9)
-	{
-		ft_putnbr_fd(number / 10, fd);
-		ft_putnbr_fd(number % 10, fd);
-	}
-	else
-		ft_putchar1(number + 48, fd);
-}
-
-void	ft_hexadec(unsigned int numeric, char f_symb, int *length)
+void	ft_hex_print(unsigned long long numeric, char f_symb, int *length)
 {
 	char	*base;
-	char	hex1[13];
+	char	hex_out[13];
 	int		ind;
 
 	ind = 0;
@@ -98,10 +74,10 @@ void	ft_hexadec(unsigned int numeric, char f_symb, int *length)
 		*length += ft_putchar('0');
 	while (numeric != 0)
 	{
-		hex1[ind] = base[numeric % 16];
+		hex_out[ind] = base[numeric % 16];
 		numeric = numeric / 16;
 		++ind;
 	}
 	while (ind--)
-		*length += ft_putchar(hex1[ind]);
+		*length += ft_putchar(hex_out[ind]);
 }

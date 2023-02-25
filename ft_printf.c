@@ -6,28 +6,13 @@
 /*   By: selbakya <selbakya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 15:43:22 by selbakya          #+#    #+#             */
-/*   Updated: 2023/02/24 16:12:46 by selbakya         ###   ########.fr       */
+/*   Updated: 2023/02/25 18:24:00 by selbakya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putchar1(char c, int fd)
-{
-	write(fd, &c, 1);
-}
-
-void	ft_putstr(char *str, int *length)
-{
-	if (!str)
-	{
-		*length += write(1, "(null)", 6);
-		return ;
-	}
-	*length += write(1, str, ft_strlen(str));
-}
-
-int	ft_check(const char f_symb, va_list arg_list)
+int	ft_read_flag(const char f_symb, va_list arg_list)
 {
 	int	length;
 
@@ -44,10 +29,8 @@ int	ft_check(const char f_symb, va_list arg_list)
 		ft_unsigned(va_arg(arg_list, unsigned int), &length);
 	else if (f_symb == 'p')
 		ft_pointer(va_arg(arg_list, unsigned long long), &length);
-	else if (f_symb == 'x')
-		ft_hexadec(va_arg(arg_list, unsigned int), 'x', &length);
-	else if (f_symb == 'X')
-		ft_hexadec(va_arg(arg_list, unsigned int), 'X', &length);
+	else if (f_symb == 'x' || f_symb == 'X')
+		ft_hex_print(va_arg(arg_list, unsigned int), f_symb, &length);
 	return (length);
 }
 
@@ -65,7 +48,7 @@ int	ft_printf(const char *str, ...)
 		if (str[index] == '%')
 		{
 			++index;
-			len += ft_check(str[index], arg_list);
+			len += ft_read_flag(str[index], arg_list);
 		}
 		else
 			len += ft_putchar(str[index]);
