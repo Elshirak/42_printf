@@ -12,7 +12,7 @@ Fulll subject you can see [here](https://github.com/Elshirak/42_printf/blob/main
 
 * [![selbakya's 42 ft_printf Score](https://badge42.vercel.app/api/v2/cldj70azv00300fl3u17rbnil/project/2952785)](https://github.com/JaeSeoKim/badge42)  
 * ***Approximate labor costs:***    about 70 hours
-* ***Actual labor costs:***    12 hours 0 minutes
+* ***Actual labor costs:***    15 hours 0 minutes
 * ***Start date:***    30.01.2023 
 * ***Deadline:***   07.02.2023
 <br>
